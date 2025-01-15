@@ -34,17 +34,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+  var todoList = [""]
+  
+  
+  var body: some View {
+    NavigationStack {
+      List(todoList, id: \.self) { item in
+        Text("\(item)")
+      }
+      .navigationTitle("List")
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
