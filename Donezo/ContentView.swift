@@ -42,7 +42,19 @@ struct ContentView: View {
       List(todoList, id: \.self) { item in
         Text("\(item)")
       }
-      .navigationTitle("List")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .principal) {
+          Text("List").font(.title)
+        }
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+            print("Adding")
+          } label: {
+            Image(systemName: "plus")
+          }
+        }
+      }
     }
   }
 }
