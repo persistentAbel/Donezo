@@ -35,25 +35,31 @@ import SwiftUI
 
 struct ContentView: View {
   var todoList = [""]
+  @State var isSheetShowing = false
   
   
   var body: some View {
     NavigationStack {
-      List(todoList, id: \.self) { item in
-        Text("\(item)")
-      }
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        ToolbarItem(placement: .principal) {
-          Text("List").font(.title)
+      VStack {
+        List(todoList, id: \.self) { item in
+          Text("\(item)")
         }
-        ToolbarItem(placement: .topBarTrailing) {
-          Button {
-            print("Adding")
-          } label: {
-            Image(systemName: "plus")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          ToolbarItem(placement: .principal) {
+            Text("List").font(.title)
+          }
+          ToolbarItem(placement: .topBarTrailing) {
+            Button {
+              isSheetShowing = true
+            } label: {
+              Image(systemName: "plus")
+            }
           }
         }
+      }
+      .sheet(isPresented: $isSheetShowing) {
+        
       }
     }
   }
