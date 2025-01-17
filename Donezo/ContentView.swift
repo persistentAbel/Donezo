@@ -66,10 +66,11 @@ struct ContentView: View {
 }
 
 struct AddTaskView: View {
+  @State private var newTask = ""
   var body: some View {
     NavigationStack {
       Form {
-        Text("Test")
+        TextField("New item", text: $newTask)
       }
     }
   }
