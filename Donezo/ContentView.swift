@@ -60,6 +60,8 @@ struct ContentView: View {
       }
       .sheet(isPresented: $isSheetShowing) {
         AddTaskView(todoList: $todoList)
+          .presentationDetents([.medium, .large])
+          .presentationDragIndicator(.visible)
       }
     }
   }
