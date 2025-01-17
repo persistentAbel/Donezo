@@ -41,9 +41,19 @@ struct ContentView: View {
   var body: some View {
     NavigationStack {
       VStack {
-        List(todoList, id: \.self) { item in
-          Text("\(item)")
+        if todoList.isEmpty {
+          Text("Tap + to add an item")
+            .foregroundStyle(Color.gray)
+            .font(.headline)
+            .padding()
+        } else {
+          List(todoList, id: \.self) { item in
+            Text("\(item)")
+          }
+          
         }
+      }
+        
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem(placement: .principal) {
@@ -63,7 +73,6 @@ struct ContentView: View {
           .presentationDetents([.medium, .large])
           .presentationDragIndicator(.visible)
       }
-    }
   }
 }
 
@@ -75,11 +84,11 @@ struct AddTaskView: View {
     NavigationStack {
       Form {
         TextField("New item", text: $newTask)
-        Button("Add Task") {
-          if !newTask.isEmpty {
-            todoList.append(newTask)
-            dismiss()
-          }
+          Button("Add Task") {
+            if !newTask.isEmpty {
+              todoList.append(newTask)
+              dismiss()
+            }
         }
       }
       .navigationTitle("Add Task")
