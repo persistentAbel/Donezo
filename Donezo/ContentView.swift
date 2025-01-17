@@ -55,26 +55,26 @@ struct ContentView: View {
           }
         }
       }
-        
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-          ToolbarItem(placement: .principal) {
-            Text("List").font(.title)
-          }
-          ToolbarItem(placement: .topBarTrailing) {
-            Button {
-              isSheetShowing = true
-            } label: {
-              Image(systemName: "plus")
-            }
+      
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .principal) {
+          Text("List").font(.title)
+        }
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+            isSheetShowing = true
+          } label: {
+            Image(systemName: "plus")
           }
         }
       }
-      .sheet(isPresented: $isSheetShowing) {
-        AddTaskView(todoList: $todoList)
-          .presentationDetents([.medium, .large])
-          .presentationDragIndicator(.visible)
-      }
+    }
+    .sheet(isPresented: $isSheetShowing) {
+      AddTaskView(todoList: $todoList)
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
+    }
   }
   func deleteItem(at offsets: IndexSet) {
     todoList.remove(atOffsets: offsets)
@@ -89,11 +89,11 @@ struct AddTaskView: View {
     NavigationStack {
       Form {
         TextField("New item", text: $newTask)
-          Button("Add Task") {
-            if !newTask.isEmpty {
-              todoList.append(newTask)
-              dismiss()
-            }
+        Button("Add Task") {
+          if !newTask.isEmpty {
+            todoList.append(newTask)
+            dismiss()
+          }
         }
       }
       .navigationTitle("Add Task")
