@@ -65,6 +65,20 @@ struct ContentView: View {
   }
 }
 
+struct AddTaskView: View {
+  var body: some View {
+    NavigationStack {
+      Form {
+        Text("Test")
+      }
+    }
+  }
+}
+
 #Preview {
   ContentView()
+}
+
+#Preview {
+  AddTaskView()
 }
