@@ -59,7 +59,7 @@ struct ContentView: View {
         }
       }
       .sheet(isPresented: $isSheetShowing) {
-        
+        AddTaskView(todoList: $todoList)
       }
     }
   }
@@ -67,11 +67,21 @@ struct ContentView: View {
 
 struct AddTaskView: View {
   @State private var newTask = ""
+  @Binding var todoList: [String]
+  @Environment(\.dismiss) private var dismiss
   var body: some View {
     NavigationStack {
       Form {
         TextField("New item", text: $newTask)
+        Button("Add Task") {
+          if !newTask.isEmpty {
+            todoList.append(newTask)
+            dismiss()
+          }
+        }
       }
+      .navigationTitle("Add Task")
+      .navigationBarTitleDisplayMode(.inline)
     }
   }
 }
@@ -81,5 +91,5 @@ struct AddTaskView: View {
 }
 
 #Preview {
-  AddTaskView()
+  AddTaskView(todoList: .constant(["Item"]))
 }
