@@ -55,7 +55,7 @@ struct ContentView: View {
           }
         }
       }
-      
+      .animation(.easeInOut, value: todoList)
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .principal) {
