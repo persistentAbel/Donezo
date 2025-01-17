@@ -34,8 +34,8 @@
 import SwiftUI
 
 struct ContentView: View {
-  var todoList = [""]
-  @State var isSheetShowing = false
+  @State private var todoList: [String] = []
+  @State private var isSheetShowing = false
   
   
   var body: some View {
