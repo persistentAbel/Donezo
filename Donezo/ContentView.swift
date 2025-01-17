@@ -47,10 +47,12 @@ struct ContentView: View {
             .font(.headline)
             .padding()
         } else {
-          List(todoList, id: \.self) { item in
-            Text("\(item)")
+          List {
+            ForEach(todoList, id: \.self) { item in
+              Text("\(item)")
+            }
+            .onDelete(perform: deleteItem)
           }
-          
         }
       }
         
@@ -73,6 +75,9 @@ struct ContentView: View {
           .presentationDetents([.medium, .large])
           .presentationDragIndicator(.visible)
       }
+  }
+  func deleteItem(at offsets: IndexSet) {
+    todoList.remove(atOffsets: offsets)
   }
 }
 
