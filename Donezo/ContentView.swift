@@ -77,7 +77,9 @@ struct ContentView: View {
     }
   }
   func deleteItem(at offsets: IndexSet) {
-    todoList.remove(atOffsets: offsets)
+    withAnimation {
+      todoList.remove(atOffsets: offsets)
+    }
   }
 }
 
